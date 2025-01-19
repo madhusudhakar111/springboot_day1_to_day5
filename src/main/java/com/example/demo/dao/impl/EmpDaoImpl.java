@@ -5,8 +5,7 @@ import com.example.demo.dto.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Repository;
+
 import org.springframework.stereotype.Service;
 
 import java.sql.ResultSet;
@@ -40,6 +39,26 @@ public class EmpDaoImpl implements EmpDao {
         String sql = "INSERT INTO emp (id, name, phonenumber) VALUES (?, ?, ?)";
         return jdbcTemplate.update(sql, emp.getId(), emp.getName(), emp.getPhoneNumber());
     }
+
+
+    @Override
+    public int partialUpdateEmp(Employee emp) {
+        String sql = "UPDATE emp SET phonenumber = ? WHERE id = ?";
+        return jdbcTemplate.update(sql, emp.getPhoneNumber(), emp.getId());
+    }
+
+    @Override
+    public int replaceEmp(String eid, Employee emp) {
+        String sql = "UPDATE emp SET id=?, name=?, phonenumber = ? WHERE id = ?";
+        return jdbcTemplate.update(sql, emp.getId(), emp.getName(), emp.getPhoneNumber(), eid);
+    }
+
+    @Override
+    public int deleteEmployee(String id) {
+        String sql = "DELETE FROM emp WHERE id = ?";
+        return jdbcTemplate.update(sql, id);
+    }
+
 
 
 }

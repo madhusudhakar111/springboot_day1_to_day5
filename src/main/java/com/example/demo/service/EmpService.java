@@ -11,4 +11,9 @@ public interface EmpService {
     void saveEmp(String eid, String ename, String ephoneNumber);
 
 
+    void partialUpdateEmp(String eid, String ephoneNumber);
+
+    void replaceEmp(String eid, Employee emp);
+
+    void deleteEmployee(String id);
 }

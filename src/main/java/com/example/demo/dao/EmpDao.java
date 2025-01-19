@@ -10,4 +10,9 @@ public interface EmpDao {
     int saveEmp(Employee emp);
 
 
+    int partialUpdateEmp(Employee emp);
+
+    int replaceEmp(String eid, Employee emp);
+
+    int deleteEmployee(String id);
 }

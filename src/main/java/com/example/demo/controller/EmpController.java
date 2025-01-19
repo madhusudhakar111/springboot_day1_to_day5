@@ -31,23 +31,44 @@ public class EmpController {
         return response;
     }
 
+
     @PatchMapping("/partialupdateemp")
     public String partialUpdateEmp(@RequestParam String eid,  @RequestParam String phoneNumber) {
-        // To-Do for paritical update      1, 900
-        return "success";
+        String response;
+        try {
+            empService.partialUpdateEmp(eid,  phoneNumber);
+            response = "succes";
+        } catch (Exception e) {
+            e.printStackTrace();
+            response = "failed";
+        }
+        return response;
     }
 
     @PutMapping("/updateemp")
-    public String updateEnp(@RequestParam String eid, @RequestParam String ename, @RequestParam String phoneNumber) {
-        // To-Do for update   2 ,  Ram , 3333
-        return "success";
+    public String updateEmp(@RequestParam String eid, @RequestBody Employee emp) {
+        String response;
+        try {
+            empService.replaceEmp(eid, emp);
+            response = "succes";
+        } catch (Exception e) {
+            e.printStackTrace();
+            response = "failed";
+        }
+        return response;
     }
 
-    @DeleteMapping("{eid}")
+    @DeleteMapping("delete/{eid}")
     public String deleteEmp(@PathVariable String eid) {
-        // To-Do for paritical delete      1, 900
-        return "success";
+        String response;
+        try {
+            empService.deleteEmployee(eid);
+            response = "succes";
+        } catch (Exception e) {
+            e.printStackTrace();
+            response = "failed";
+        }
+        return response;
     }
-
 
 }

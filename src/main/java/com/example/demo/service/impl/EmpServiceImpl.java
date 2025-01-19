@@ -32,6 +32,27 @@ public class EmpServiceImpl implements EmpService {
     }
 
 
+    @Override
+    public void partialUpdateEmp(String eid, String ephoneNumber) {
+        Employee empObj = new Employee();
+        empObj.setId(eid);
+        empObj.setPhoneNumber(ephoneNumber);
+        empDao.partialUpdateEmp(empObj);
+
+    }
+
+    @Override
+    public void replaceEmp(String eid, Employee empObj) {
+
+        empDao.replaceEmp(eid, empObj);
+    }
+
+    @Override
+    public void deleteEmployee(String id) {
+        empDao.deleteEmployee(id);
+    }
+
+
 
 
 }
